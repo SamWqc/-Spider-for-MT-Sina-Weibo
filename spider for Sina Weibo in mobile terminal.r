@@ -1,4 +1,4 @@
-#cmdÆô¶¯selenium (java -jar selenium-server-standalone-3.8.1.jar)
+#cmdå¯åŠ¨selenium (java -jar selenium-server-standalone-3.8.1.jar)
 library(RSelenium)
 library(rvest)
 library(downloader)
@@ -8,7 +8,7 @@ ur_password='put ur password in'
 ################################Login Part#########################
 #start browser
 remDr <- remoteDriver('localhost',4444L,browserName = "firefox")
-remDr$open()  # ´ò¿ª
+remDr$open()  # æ‰“å¼€
 # open the login page of Sina Weibo
 url <- 'https://passport.weibo.cn/signin/login'
 remDr$navigate(url)
@@ -92,8 +92,8 @@ remDr$goBack()
 all_content_button=remDr$findElement(using = 'xpath',value='//div[@class="lite-btn-more"]')
 all_content_button$clickElement()
 #move ur mouse
-#Ä£Äâ¹ö¶¯ÌõÏÂÀ­¹ı³Ì,½«Õû¸ö½çÃæ¼ÓÔØ³öÀ´,ÔÙ·Ö±ğÌáÈ¡ËùĞèĞÅÏ¢
-#Ö´ĞĞJavaScriptÆ¬¶Î,µ¥Î»À­È¡³¤¶È=Ò³ÃæÊ£Óà¸ß¶È,Ñ­»·À­È¡,Ã¿´ÎÀ­È¡¶¼¼ÇÂ¼ĞÂµÄ×Ü¸ß¶È,Ö±ÖÁ×Ü¸ß¶È²»ÔÚ·¢Éú±ä»¯,ÔòÍ£Ö¹ÏÂÀ­
+#æ¨¡æ‹Ÿæ»šåŠ¨æ¡ä¸‹æ‹‰è¿‡ç¨‹,å°†æ•´ä¸ªç•Œé¢åŠ è½½å‡ºæ¥,å†åˆ†åˆ«æå–æ‰€éœ€ä¿¡æ¯
+#æ‰§è¡ŒJavaScriptç‰‡æ®µ,å•ä½æ‹‰å–é•¿åº¦=é¡µé¢å‰©ä½™é«˜åº¦,å¾ªç¯æ‹‰å–,æ¯æ¬¡æ‹‰å–éƒ½è®°å½•æ–°çš„æ€»é«˜åº¦,ç›´è‡³æ€»é«˜åº¦ä¸åœ¨å‘ç”Ÿå˜åŒ–,åˆ™åœæ­¢ä¸‹æ‹‰
 last_height = 0
 repeat {
   remDr$executeScript("window.scrollTo(0,document.body.scrollHeight);", list(remDr$findElement(using = 'xpath',value = '//div[@class="weibo-text"]')))
@@ -127,7 +127,7 @@ method_usent=unlist(sapply(method_usent_elemtn,function(x){x$getElementText()}))
 #get the num of repost
 all_num_element=remDr$findElements(using = 'xpath',value='//div[@class="m-diy-btn m-box-col m-box-center m-box-center-a"]/h4')
 all_num=unlist(sapply(all_num_element,function(x){x$getElementText()}))
-all_num=all_num[-which(all_num=='¹«¿ª')]
+all_num=all_num[-which(all_num=='å…¬å¼€')]
 re_num=all_num[seq(1,length(all_num),3)]
 com_num=all_num[seq(2,length(all_num),3)]
 like_num=all_num[seq(3,length(all_num),3)]
@@ -137,7 +137,7 @@ like_num=all_num[seq(3,length(all_num),3)]
 #back_button$clickElement() 
 
 
-######################integrate the info you've gotten################
+######################integrate the info you've gotten####
 my_main_page_info=data.frame(time_usent,method_usent,re_num,com_num,like_num,page_content_all,page_content_og)
 num
 page_content_rp
